@@ -1,0 +1,9 @@
+.headline {
+    text-align: center;
+    background: grey;
+    padding: 2px;
+    height: 20px;
+    width: 100%;
+    border: 1px black solid;
+    align-content: center;
+}

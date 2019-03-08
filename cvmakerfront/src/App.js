@@ -13,11 +13,24 @@ class App extends Component {
     ]
     this.state = {
       CVPoints : {
-        AcademicDetails: x,
-        TechnicalSkills: x,
-        Courses: "",
-        ExtraCurricularActivities: x.concat(x),
-        ScholasticAchievements: x.concat(x),
+        ScholasticAchievements: [],
+        TechnicalSkills: [],
+        Courses : "",
+        Projects: [],
+        Internships: [],
+        POR: [],
+        AcademicDetails: [],
+        ExtraCurricularActivities: [],
+      },
+      Display: {
+        ScholasticAchievements: true,
+        TechnicalSkills: true,
+        Courses : true,
+        Projects: true,
+        Internships: true,
+        POR: true,
+        AcademicDetails: true,
+        ExtraCurricularActivities: true,
       }
     }
   }

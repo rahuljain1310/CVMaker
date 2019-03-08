@@ -108,7 +108,8 @@ export default class EditSectionTitleDurationPoints  extends Component {
 		this.props.update(x)		
 	}
 	addpoint = () => {
-		this.props.update(this.props.points.concat([{title:"",duration:"",subpoints: []}]))
+        this.props.update(this.props.points.concat([{title:"",duration:"",subpoints: []}]))
+        console.log("update for point added")
 	}
 	deletepoint = (index) => {
 		let x = this.props.points
@@ -116,10 +117,10 @@ export default class EditSectionTitleDurationPoints  extends Component {
 		this.props.update(x)
 	} 
     render() {
-		if(this.props.points === undefined || this.props.points.length === 0) {
-			this.props.update(this.props.points.concat([{title:"",Duration:"",subpoints: [""]}]))
-		}
-		console.log(this.props.points)
+		// if(this.props.points === undefined || this.props.points.length === 0) {
+		// 	this.props.update(this.props.points.concat([{title:"",duration:"",subpoints: [""]}]))
+		// }
+		// console.log(this.props.points)
         return (
             <div>
                 <ToggleBar show={this.state.show} text={this.props.section} toggle={()=>this.setState({show: !this.state.show})}/>

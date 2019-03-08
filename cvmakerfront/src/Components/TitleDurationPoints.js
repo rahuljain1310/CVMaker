@@ -9,7 +9,7 @@ export default class TitleDurationPoints extends Component {
                         <div className="SubDescription"> 
                             {object.subpoints.map( (x) => 
                                 <div className="Subpoint"> 
-                                - <p>{x}</p> <br/>
+                                    <p>-{x}</p> <br/>
                                 </div>
                             )}
                         </div>

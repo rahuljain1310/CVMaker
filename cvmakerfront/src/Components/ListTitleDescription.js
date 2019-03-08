@@ -4,7 +4,7 @@ export default class ListTitleDescription extends Component {
 		return (
 			<div className="DescriptionBox">
 				{this.props.list.map( (object,i) =>
-					<li key={i}> <span><strong>{object.Title}</strong>:{object.Description} </span></li> 
+					<li key={i}> <span><strong>{object.title}</strong>:{object.description} </span></li> 
 				)}
 			</div>
 		)

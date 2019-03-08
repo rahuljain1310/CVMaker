@@ -1,6 +1,6 @@
 .resume-maker-container {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     grid-template-rows: auto;
     grid-template-areas: 
       "left right"
@@ -13,6 +13,7 @@
 
 .resume-edit {
   grid-area: left;
+  padding: 10px;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto 100px;

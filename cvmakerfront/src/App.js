@@ -8,11 +8,17 @@ class App extends Component {
   constructor(props) {
     super(props)
     let x = [
-      {Title: "Ttiel1",Description: "Description"},
-      {Title: "Ttiel2",Description: "Description"}
+      {title: "Ttiel1",description: "description"},
+      {title: "Ttiel2",description: "description"}
     ]
     this.state = {
-      CVPoints : {AcademicDetails: x},
+      CVPoints : {
+        AcademicDetails: x,
+        TechnicalSkills: x,
+        Courses: "",
+        ExtraCurricularActivities: x.concat(x),
+        ScholasticAchievements: x.concat(x),
+      }
     }
   }
 
@@ -21,7 +27,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.CVPoints)
     return (
       <div className="resume-maker-container">
         <EditResume EditDetails={this.state.CVPoints} updateCV={this.updateCV}/>

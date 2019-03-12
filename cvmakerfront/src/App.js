@@ -7,12 +7,9 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props)
-    let x = [
-      {title: "Ttiel1",description: "description"},
-      {title: "Ttiel2",description: "description"}
-    ]
     this.state = {
       CVPoints : {
+        AcademicDetails: [],
         ScholasticAchievements: [],
         TechnicalSkills: [],
         Courses : "",
@@ -21,16 +18,9 @@ class App extends Component {
         POR: [],
         AcademicDetails: [],
         ExtraCurricularActivities: [],
-      },
-      Display: {
-        ScholasticAchievements: true,
-        TechnicalSkills: true,
-        Courses : true,
-        Projects: true,
-        Internships: true,
-        POR: true,
-        AcademicDetails: true,
-        ExtraCurricularActivities: true,
+        Certification: [],
+        WorkEx: [],
+        ProfessionalSummary: "",
       }
     }
   }
@@ -42,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <div className="resume-maker-container">
-        <EditResume EditDetails={this.state.CVPoints} updateCV={this.updateCV}/>
+        <EditResume EditDetails={this.state.CVPoints} updateCV={this.updateCV} state={this.state}/>
         <ScreenResume CVSections={this.state.CVPoints}/>
       </div>
     );

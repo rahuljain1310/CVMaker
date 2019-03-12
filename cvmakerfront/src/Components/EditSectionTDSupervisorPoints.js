@@ -32,7 +32,7 @@ class Point extends Component {
         super(props)
         this.state = {
             title : this.props.detail.title,
-            organisation : this.props.detail.organisation,
+            supervisor : this.props.detail.supervisor,
             duration: this.props.detail.duration,
             subpoints: this.props.detail.subpoints,
         }
@@ -45,8 +45,8 @@ class Point extends Component {
         if (nextProps.detail.duration !== this.state.duration) {
             this.setState({duration : nextProps.detail.duration})
         }
-        if (nextProps.detail.organisation !== this.state.organisation) {
-            this.setState({organisation : nextProps.detail.organisation})
+        if (nextProps.detail.supervisor !== this.state.supervisor) {
+            this.setState({supervisor : nextProps.detail.supervisor})
         }
 	}
 	
@@ -74,12 +74,13 @@ class Point extends Component {
         let x = this.props.index
 		return (
             <div className="edit-point">    
-                <input className="edit-point-duration" placeholder="Organisation" 
-                        value={this.state.organisation} onChange={(e)=>this.setState({organisation: e.target.value}, () => updatepoint(this.state,x))}/>
+                <input className="edit-point-title" placeholder="Title" 
+                        value={this.state.title} onChange={(e)=>this.setState({title: e.target.value},() => updatepoint(this.state,x))}/>
+                <input className="edit-point-duration" placeholder="Supervisor" 
+                        value={this.state.supervisor} onChange={(e)=>this.setState({supervisor: e.target.value}, () => updatepoint(this.state,x))}/>
                 <input className="edit-point-duration" placeholder="Duration" 
                     value={this.state.duration} onChange={(e)=>this.setState({duration: e.target.value}, () => updatepoint(this.state,x))}/>
-                <input className="edit-point-title" placeholder="Title" 
-                    value={this.state.title} onChange={(e)=>this.setState({title: e.target.value},() => updatepoint(this.state,x))}/>
+      
                 <button onClick={(e) => deletepoint(x)}>Remove</button><br/>
 				<button onClick={this.addpoint}>Add Sub-Point</button><br/>
                 {this.props.detail.subpoints.map( (object,i) =>
@@ -103,7 +104,7 @@ class EditTDPBox extends Component {
 	}
 }
 
-export default class EditSectionTitleDurationPoints  extends Component {
+export default class EditSectionTDSupervisorPoints  extends Component {
     constructor(props) {
 		super(props)
         this.state = { show : false }
@@ -114,7 +115,7 @@ export default class EditSectionTitleDurationPoints  extends Component {
 		this.props.update(x)		
 	}
 	addpoint = () => {
-        this.props.update(this.props.points.concat([{title:"",duration:"",subpoints: []}]))
+        this.props.update(this.props.points.concat([{title:"",duration:"",supervisor:"",subpoints: []}]))
         console.log("update for point added")
 	}
 	deletepoint = (index) => {

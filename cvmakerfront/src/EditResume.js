@@ -4,6 +4,7 @@ import EditSectionTitleDescription from './Components/EditSectionTitleDescriptio
 import EditSectionTitleDurationPoints from './Components/EditSectionTitleDurationPoints';
 import EditSectionTDSupervisorPoints from './Components/EditSectionTDSupervisorPoints';
 import EditAcademicDetails from './Components/EditAcademicDetails';
+import PersonalDetails from './Components/PersonalDetails'
 
 class DescriptionParagraph extends Component {
     constructor(props) {
@@ -24,13 +25,21 @@ class DescriptionParagraph extends Component {
 export default class EditResume extends Component {
 	constructor(props) {
 		super(props)
-		this.state = this.props.state.CVPoints
+		this.state = this.props.details
 	}
+
+	updateExtraPoints (key,newvalue) {
+		let newstate = this.state.ExtraPoints
+		newstate[key] = newvalue
+		this.setState({ExtraPoints:newstate},()=>this.props.updateCV(this.state))
+	}
+
 	render() {
+		let additional_points = Object.keys(this.state.ExtraPoints)
 		return (
 		<div className="resume-edit">
 			<div className="edit-body">
-				{/* <AcademicDetails/> */}
+				<PersonalDetails section="Personal Details" details={this.state.PersonalDetails} update={(x)=>this.setState({PersonalDetails: x},() => this.props.updateCV(this.state))}/>
 				<EditAcademicDetails section="Academic Details" points={this.state.AcademicDetails} update={(x)=>this.setState({AcademicDetails: x},() => this.props.updateCV(this.state))}/>
 				<EditSectionTitleDescription section="Scholastic Achievements" points={this.state.ScholasticAchievements} update={(x)=>this.setState({ScholasticAchievements: x},() => this.props.updateCV(this.state))}/>
 				<DescriptionParagraph section="Courses" list={this.state.Courses} update={(x) => this.setState({Courses: x},() => this.props.updateCV(this.state)) }/>
@@ -42,10 +51,9 @@ export default class EditResume extends Component {
 				<EditSectionTitleDurationPoints section="Position of Responsibility" points={this.state.POR} update={(x)=>this.setState({POR:x},()=>this.props.updateCV(this.state))} />
 				<EditSectionTitleDescription section="Extra Curricular Activities" points={this.state.ExtraCurricularActivities} update={(x)=>this.setState({ExtraCurricularActivities: x},() => this.props.updateCV(this.state))}/>
 				<EditSectionTitleDescription section="Certification" points={this.state.Certification} update={(x)=>this.setState({Certification: x},() => this.props.updateCV(this.state))}/>
-			
-			</div>
-			<div className="edit-button">
-				<button onClick={() => this.props.updateCV(this.state)}>Save CV</button>
+				{additional_points.map( (key,i) =>
+                    <EditSectionTitleDescription section={key} points={this.state.ExtraPoints[key]} update={(x)=>this.updateExtraPoints(key,x)}/>
+				)}
 			</div>
 		</div>
 		);

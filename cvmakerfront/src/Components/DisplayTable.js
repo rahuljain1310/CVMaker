@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 export default class DisplayTable extends Component {
 	render() {
-        console.log(this.props.list)
 		return (
             <table className="Academic Details">
                 <thead>
-                    <td>Passing Year</td>
-                    <td>Degree/Board</td>
-                    <td>Institute/School</td>
-                    <td>%/GPA</td>
+                    <tr>
+                        <td>Passing Year</td>
+                        <td>Degree/Board</td>
+                        <td>Institute/School</td>
+                        <td>%/GPA</td>
+                    </tr>
                 </thead>
                 <tbody>
                 {this.props.list.map( (object,i) =>
